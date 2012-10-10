@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Script Examples</title>
+	<style type="text/css">
+		#mock{
+			display: none;
+		}
+	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
+	<script src="js/fx.reveal.js"></script>
+	<script>
+		var getNumber = function(){
+			return 5;
+		};
+
+		//alert(getNumber());
+
+		var cat = {
+			furColor: "black",
+			tailLength: "bobbed",
+			eyeColor: "blue",
+			speak: function(){
+				alert("meow");
+			},
+			eat: function(){
+				alert("Yummy!");
+				this.speak();
+			}
+		};
+
+		var dog = {
+			furColor: "black",
+			tailLength: "bobbed",
+			eyeColor: "blue",
+			speak: function(){
+				alert("bark");
+			},
+			eat: function(){
+				alert("Yummy!");
+				this.speak();
+			}
+		};
+
+		//console.log(cat.furColor, cat.speak);
+		cat.eat();
+		dog.eat();
+
+		document.addEvent("domready", function(){
+			document.id("hidable").addEvent("click", function(){
+				//console.log("clicked");
+				this.dissolve();
+				document.id("mock").reveal();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div id="hidable">
+		<p>Once when I was very young lorem ipsum dolor sit amaet.</p>
+		<p>Once when I was very young lorem ipsum dolor sit amaet.</p>
+		<p>Once when I was very young lorem ipsum dolor sit amaet.</p>
+		<p>Once when I was very young lorem ipsum dolor sit amaet.</p>
+	</div>
+	<div id="mock">
+		<p>What did you DO?</p>
+	</div>
+</body>
+</html>
