@@ -10,6 +10,11 @@
 <div>
 <?php 
     $productData = $db->query("SELECT * FROM `products`;");
+    
+    if($db->errno)
+    {
+        die("Error: ".$db->error." Info: ". $db->info);
+    }
     while($product = $productData->fetch_object())
     {
         //print_r($product); //good for testing
