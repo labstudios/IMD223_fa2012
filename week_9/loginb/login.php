@@ -6,8 +6,9 @@ require_once("classes/user.php");
 if(empty($_POST['username']) ||
     empty($_POST['password1']))
     {
-        $_SESSION['error'] = "Not all fields provided.";
+        $_SESSION['loginError'] = "Not all fields provided.";
         header("Location: ./");
+        exit;
     }
 //verify new encryption against the one
 //stored in the database
@@ -16,6 +17,12 @@ if($user)
 {
     //store logged in user
     $_SESSION['userId'] = $user->id;    
+}
+else
+{
+    $_SESSION['loginError'] = "User name or password was incorrect.";
+    header("Location: ./");
+    exit;
 }
 
  ?><!DOCTYPE HTML>

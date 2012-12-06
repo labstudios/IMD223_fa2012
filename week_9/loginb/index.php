@@ -10,6 +10,15 @@ require_once("classes/product.php"); ?><!DOCTYPE HTML>
         label{
             display: block;
         }
+        .error{
+            color: red;
+            background-color: #FFC4C4;
+            border: red thin solid;
+            padding: 3px;
+            font-size: 1.2em;
+            font-weight: bold;
+            width: 25%;
+        }
     </style>
 </head>
 
@@ -37,6 +46,12 @@ foreach($products as $product)
 </form>
 
 <h3>Login</h3>
+<?php if(!empty($_SESSION['loginError']))
+        {
+            echo "<div class=\"error\">".$_SESSION['loginError']."</div>";
+            $_SESSION['loginError'] = null;
+        }
+ ?>
 <form action="login.php" method="post" enctype="multipart/form-data">
     <label>User name: <input type="text" name="username" /></label>
     <label>Password: <input type="password" name="password1" /></label>
